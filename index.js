@@ -180,29 +180,8 @@ gameEnd() {
   
   console.log(`${this.moveHistory.length} moves needed\nMoves history ...`);
   console.log(this.moveHistory);
-  /* this.restartGame(); */
-}
 
-/* restartGame() {
-  //restart the game 
-  this.rl.question('\nRestart the game Y/N : ', (input) => {
-    if (input.trim().toLowerCase() === 'y') {
-      if(this.gameEnded === true) {
-      this.ticTacToe = new Array(9);}
-      this.gameEnded = false;
-      this.moveHistory = [];
-      this.currentPlayer = true;
-      console.clear();
-      this.run();
-    } else if (input.trim().toLowerCase() === 'n') {
-      this.rl.close();
-      process.exit();
-    } else {
-      console.log('Invalid input. Please enter Y or N.');
-      this.restartGame();
-    }
-  });
-} */
+}
 }
 const game = new TicTacToe();
 game.run();
