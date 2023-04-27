@@ -41,7 +41,6 @@ class TicTacToe {
   }
 
   // select Player
-  1
    getPlayer() {
     return this.currentPlayer ? 1 : 2;
   }
@@ -84,7 +83,8 @@ class TicTacToe {
         const checkSet = new Set();
 
         // possible horizontal alignments 
-
+        
+        checkSet.clear();
         if ((this.ticTacToe[0] && this.ticTacToe[1] && this.ticTacToe[2] && 
            (Array.from(checkSet.add(this.ticTacToe[0]).add(this.ticTacToe[1]).add(this.ticTacToe[2])).length === 1 ))||
 
@@ -98,10 +98,10 @@ class TicTacToe {
            
             this.gameEnd();
         }
-        checkSet.clear();
        
         // possible vertical alignments 
-
+        checkSet.clear();
+        
         if ((this.ticTacToe[0] && this.ticTacToe[3] && this.ticTacToe[6] && 
           (Array.from(checkSet.add(this.ticTacToe[0]).add(this.ticTacToe[3]).add(this.ticTacToe[6])).length === 1 ))||
 
@@ -115,10 +115,10 @@ class TicTacToe {
            
            this.gameEnd();
        }
-       checkSet.clear();
      
         // possible diagonal alignments
-
+        checkSet.clear();
+        
         if ((this.ticTacToe[0] && this.ticTacToe[4] && this.ticTacToe[8] && 
           (Array.from(checkSet.add(this.ticTacToe[0]).add(this.ticTacToe[4]).add(this.ticTacToe[8])).length === 1 ))||
 
@@ -129,16 +129,15 @@ class TicTacToe {
            
            this.gameEnd();
        }
-       checkSet.clear();
 
         // possible Draw
+        checkSet.clear();
          if (this.moveHistory.length === 9){
 
             console.log(`\nGame ended in a Draw !!`)
             
             this.gameEnd()
         } 
-        checkSet.clear();
         
     }
 
@@ -164,7 +163,7 @@ run() {
 
    // listen to inputs
    this.rl.on('line',(input) => {
-    if(this.ticTacToe.length <= 9){
+    if(this.ticTacToe.length < 10 ){
         this.checkPosition(parseInt(input));
         this.switchPlayer();
     }
@@ -184,13 +183,17 @@ gameEnd() {
   console.log(this.moveHistory);
   this.restartGame();
 }
+
 restartGame() {
   //restart the game 
   this.rl.question('\nRestart the game Y/N : ', (input) => {
     if (input.trim().toLowerCase() === 'y') {
-      if(this.gameEnded) this.ticTacToe = new Array(9);
+      if(this.gameEnded === true) {
+      this.ticTacToe = new Array(9);}
       this.gameEnded = false;
       this.moveHistory = [];
+      this.currentPlayer = true;
+      console.clear();
       this.run();
     } else if (input.trim().toLowerCase() === 'n') {
       this.rl.close();
