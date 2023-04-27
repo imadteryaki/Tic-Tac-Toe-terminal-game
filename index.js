@@ -1,6 +1,5 @@
 console.clear();
 
-const { stdout } = require('process');
 // readline module
 const readline = require('readline');
 
@@ -181,10 +180,10 @@ gameEnd() {
   
   console.log(`${this.moveHistory.length} moves needed\nMoves history ...`);
   console.log(this.moveHistory);
-  this.restartGame();
+  /* this.restartGame(); */
 }
 
-restartGame() {
+/* restartGame() {
   //restart the game 
   this.rl.question('\nRestart the game Y/N : ', (input) => {
     if (input.trim().toLowerCase() === 'y') {
@@ -203,7 +202,7 @@ restartGame() {
       this.restartGame();
     }
   });
-}
+} */
 }
 const game = new TicTacToe();
 game.run();
