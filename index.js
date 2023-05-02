@@ -105,7 +105,7 @@ class TicTacToe {
               else
               console.log(colors.red(`\nPlayer ${this.getPlayerFromChar(Array.from(checkSet)[0])} Wins!!`));
            
-            this.resetGame();
+            this.gameEnd();
         }
        
         // possible vertical alignments 
